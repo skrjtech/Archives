@@ -1,4 +1,5 @@
 #!/bin/bash
+
 export DEBIAN_FRONTEND=noninteractive
 # PYTHON INSTALL
 PYTHON_VERSION=$1
@@ -11,7 +12,8 @@ curl -O https://www.python.org/ftp/python/${PYTHON_VERSION}/Python-${PYTHON_VERS
 tar xJf Python-$PYTHON_VERSION.tar.xz                                                        
 rm -rf Python-$PYTHON_VERSION.tar.xz                                                         
 cd Python-$PYTHON_VERSION                                                                    
-./configure --prefix=/usr/local/python --with-ensurepip                                      
+# ./configure --prefix=/usr/local/python --with-ensurepip
+./configure --enable-optimizations --prefix=/usr/local/python
 make                                                                                         
 sudo make install                                                                                 
 cd ../                                                                                         
