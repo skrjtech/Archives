@@ -1,0 +1,16 @@
+version: '3.9'
+services:
+  scraping:
+    build: 
+      context: .
+      dockerfile: ./Dockerfile
+      args:
+        - IMAGE_TAG=skrjtech/python:amd64-debian-python3.9.16
+    image: skrjtech/scraping:amd64-debian-python3.9.16
+    container_name: scraping
+    tty: true
+    restart: always
+    # environment:
+    #   - DISPLAY=$DISPLAY
+    # volumes:
+    #   - /tmp/.X11-unix:/tmp/.X11-unix:rw

@@ -1,0 +1,25 @@
+Raspberry pi docker install
+
+sudo apt update && sudo apt upgrade
+curl -sSL https://get.docker.com | sh
+sudo usermod -aG docker ${USER}
+su - $USER
+ls
+docker ps -a\
+docker ps -a
+sudo usermod -aG docker $USER
+su - $USER
+reboot
+sudo reboot
+LATEST=v2.15.0
+URL=https://github.com/docker/compose/releases/download/$LATEST/docker-compose-linux-aarch64
+OUTPUT_PATH=/usr/local/lib/docker/cli-plugins/docker-compose
+sudo curl -SL $URL -o $OUTPUT_PATH
+sudo chown $USER:$USER $OUTPUT_PATH 
+sudo mkdir -p $OUTPUT_PATH 
+sudo rm -rf /usr/local/lib/docker/cli-plugins/docker-compose
+URL=https://github.com/docker/compose/releases/download/$LATEST/docker-compose-linux-aarch64
+sudo curl -SL $URL -o $OUTPUT_PATH
+sudo chown $USER:$USER /usr/local/lib/docker/cli-plugins/docker-compose 
+sudo chmod 777 /usr/local/lib/docker/cli-plugins/docker-compose 
+docker compose -v

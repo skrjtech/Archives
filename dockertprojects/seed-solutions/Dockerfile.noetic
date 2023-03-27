@@ -1,0 +1,22 @@
+ARG ROS_DISTRO=noetic
+FROM skrjtech/ros:$ROS_DISTRO
+
+SHELL [ "/bin/bash", "-c" ]
+
+USER root
+
+ENV USER=seed
+RUN useradd -m $USER && echo "$USER:$USER" | chpasswd && \
+    usermod --shell /bin/bash $USER && \
+    usermod -aG sudo $USER && \
+    echo "$USER ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/$USER && \
+    chmod 0440 /etc/sudoers.d/$USER && \
+    usermod --uid 1000 $USER && groupmod --gid 1000 $USER
+
+COPY archives/dockerProjects/seed-solutions/buildseed.sh /.buildseed.sh
+RUN bash /.buildseed.sh
+
+USER $USER
+WORKDIR /home/$USER
+
+CMD [ "/bin/bash" ]
