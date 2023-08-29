@@ -23,8 +23,8 @@ rm -rf Python-$PYTHON_VERSION
 echo 'export PYTHONDONTWRITEBYTECODE=1' >> ~/.bashrc
 echo 'export PATH=/usr/local/python/bin:$PATH' >> ~/.bashrc
 
-ln -s /usr/local/python/bin/python3 /usr/bin/python
-ln -s /usr/local/python/bin/pip3 /usr/bin/pip
+ln -sf /usr/local/python/bin/python3 /usr/bin/python
+ln -sf /usr/local/python/bin/pip3 /usr/bin/pip
 
 # Python Priority Chanege
 # update-alternatives --install /usr/local/python/bin/python3 python /usr/bin/python 1

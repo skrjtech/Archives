@@ -15,4 +15,4 @@ rm pycharm-community-$PYCHARM_VERSION.tar.gz
 mv /tmp/pycharm-community-$PYCHARM_VERSION /tmp/pycharm
 # ln -s /tmp/pycharm/bin/pycharm.sh /tmp/pycharm/bin/pycharm
 ln -s /tmp/pycharm/bin/pycharm.sh /usr/bin/pycharm
-# export PATH=/tmp/pycharm/bin:$PATH
+# export PATH=/usr/bin/pycharm:$PATH
