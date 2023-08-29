@@ -1,6 +1,7 @@
 #!/bin/bash
 
 export DEBIAN_FRONTEND=noninteractive
+
 # PYTHON INSTALL
 PYTHON_VERSION=$1
 sudo -E apt install -y tk-dev 
@@ -20,7 +21,9 @@ cd ../
 rm -rf Python-$PYTHON_VERSION
 
 echo 'export PYTHONDONTWRITEBYTECODE=1' >> ~/.bashrc
-source ~/.bashrc
+echo 'export PATH=/usr/local/python/bin:$PATH' >> ~/.bashrc
 
-# PIP UPDATE
-export PATH=/usr/local/python/bin:$PATH
+# ls -l /usr/local/python/bin/python3 /usr/bin/python
+# ls -l /usr/local/python/bin/pip3 /usr/bin/pip
+
+source ~/.bashrc
