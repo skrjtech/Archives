@@ -19,7 +19,7 @@ RUN apt install -y sudo git curl locales vim
 
 # ENV TZ Asia/Tokyo
 
-RUN bash <(curl -sSL https://raw.githubusercontent.com/skrjtech/linux-setup/main/installer/python.sh) 3.8.18
+RUN bash <(curl -sSL https://raw.githubusercontent.com/skrjtech/Archives/main/Installer/python.sh) 3.8.18
 RUN bash <(curl -sSL https://raw.githubusercontent.com/skrjtech/Archives/main/Installer/pycharm.sh) 2023.2.1
 
 CMD [ "/bin/bash" ]

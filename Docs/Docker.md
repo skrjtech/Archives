@@ -73,3 +73,6 @@ docker buildx inspect --builder multi-arch --bootstrap
 ```
 docker buildx build --platform linux/amd64,linux/arm64 -t IMAGE_TAG --push .
 ```
+
+## Atode Matomeru
+docker buildx build --platform linux/amd64,linux/arm64 -t skrjtech/scraping:$TAG --push . --build-arg IMAGE_TAG=skrjtech/python:$TAG
