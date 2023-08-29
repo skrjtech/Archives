@@ -20,6 +20,6 @@ ENV QT_IM_MODULE=fcitx
 ENV XMODIFIERS=@im=fcitx
 ENV DefalutIMModule=fcitx
 
-RUN bash <(curl -sSL https://raw.githubusercontent.com/skrjtech/linux-setup/main/installer/pycharm.sh)
+RUN bash <(curl -sSL https://raw.githubusercontent.com/skrjtech/linux-setup/main/installer/pycharm.sh) 2023.2.1
 
 CMD [ "/bin/bash" ]
