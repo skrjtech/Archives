@@ -2,12 +2,12 @@ version: '3.9'
 services:
   python:
     build: 
-      context: .
-      dockerfile: ./Dockerfile
-      args:
-        - IMAGE_TAG=debian:latest
-    image: skrjtech/scraping:amd64-debian-python3.9.16
-    container_name: python
+      context: ubuntu
+      dockerfile: ./Dockerfile.python3.9.18
+      # args:
+      #   - IMAGE_TAG=debian:latest
+    image: python3.9.18
+    container_name: pythonenv
     tty: true
     restart: always
     environment:
