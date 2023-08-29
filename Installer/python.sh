@@ -26,7 +26,7 @@ echo 'export PATH=/usr/local/python/bin:$PATH' >> ~/.bashrc
 ln -sf /usr/local/python/bin/python3 /usr/bin/python
 ln -sf /usr/local/python/bin/pip3 /usr/bin/pip
 
-# Python Priority Chanege
+# Python Priority Change
 # update-alternatives --install /usr/local/python/bin/python3 python /usr/bin/python 1
 
 source ~/.bashrc
