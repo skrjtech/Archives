@@ -20,17 +20,19 @@ FROM ubuntu
 
 RUN apt-get update
 RUN apt-get install -y language-pack-ja-base language-pack-ja fonts-noto-cjk fcitx-mozc
+ENV LANG=ja_JP.UTF-8
 # RUN im-config -n fcitx
 
-ENV GTK_IM_MODULE xim
-ENV QT_IM_MODULE fcitx
-ENV XMODIFIERS @im=fcitx
-ENV DefalutIMModule=fcitx
-
-RUN locale-gen ja_JP.UTF-8  
-ENV LANG=ja_JP.UTF-8
-ENV LC_ALL=ja_JP.UTF-8
+# ENV GTK_IM_MODULE xim
+# ENV QT_IM_MODULE fcitx
+# ENV XMODIFIERS @im=fcitx
+# ENV DefalutIMModule=fcitx
+# 
+# RUN locale-gen ja_JP.UTF-8  
+# ENV LANG=ja_JP.UTF-8
+# ENV LC_ALL=ja_JP.UTF-8
 ```
+
 ## タイムゾーン 設定
 ```
 ENV TZ Asia/Tokyo
