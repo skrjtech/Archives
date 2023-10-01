@@ -1,4 +1,25 @@
 # Docker 情報集
+Docker関連情報サイト一覧
+
+## Dockerfile Build
+Dockerfileの階層が同じの場合
+```
+docker build ./Dockerfile
+```
+階層が別にある場合
+/Root/Sample/Dockerfile  
+/Root/Sample <- Now
+```
+docker build ./Sample/Dockerfile
+```
+引数の指定
+```
+docker build ./ --build-arg argname=argvar
+```
+## Docker インストール時の応答無効化
+```
+ENV DEBIAN_FRONTEND=noninteractive
+```
 ## docker 日本語入力
 コンテナ内で日本語入力を行う為のDockerfile記述
 ### debianの場合
@@ -62,6 +83,10 @@ apt update
 apt install -y x11-apps
 xeyes
 ```
+## Docker BuildX Install
+```
+工事中
+```
 ## マルチアーキテクチャのプッシュ方法
 マルチアーキテクチャビルドを実行するために新規ビルダーを作成
 ```
@@ -76,5 +101,7 @@ docker buildx inspect --builder multi-arch --bootstrap
 docker buildx build --platform linux/amd64,linux/arm64 -t IMAGE_TAG --push .
 ```
 
-## Atode Matomeru
+## 複数のアーキテクチャに対応する場合での構築方法（Docker BuildX が必要）
+```
 docker buildx build --platform linux/amd64,linux/arm64 -t skrjtech/scraping:$TAG --push . --build-arg IMAGE_TAG=skrjtech/python:$TAG
+``````
