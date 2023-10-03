@@ -1,9 +1,10 @@
 # Docker SSH Connect
 Dockerコンテナに直接アクセスしたいときが，訪れてくるであろう...  
-私にはその時が来ました．
+私にはその時が訪れました．
 
 # sshでDockerコンテナにログイン
-Client <----> Server <----> Container
+Client <----> Server <----> Container  
+
 クライアントからサーバー内のコンテナのSSHにログインする方法として以下の手順で実現可能
 
 [ホストにログイン]
@@ -78,5 +79,5 @@ docker run -itd \
 
 サーバー側からコンテナにsshでログイン
 ```
-ssh -i pubkey　root@docker_network_ip # DockerコンテナのIPアドレスは「docker inspect ssh-cont | grep IPAddress」で探せる
+ssh -i pubkey　-p 5050 root@docker_network_ip # DockerコンテナのIPアドレスは「docker inspect ssh-cont | grep IPAddress」で探せる
 ```
