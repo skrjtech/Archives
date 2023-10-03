@@ -1,6 +1,8 @@
 # Docker Remote GUI
 DockerコンテナのアプリケーションGUIの表示について解説する．
 
+★以下の手順でうまく行かない場合は，とりあえずReboot!! <ー Server/Client含めて
+
 # 目次
 - [Call Host To Container](#call-host-to-container)
 - [Call Docker Container from Client Remote](#call-docker-container-from-client-remote)
@@ -88,8 +90,10 @@ docker run --rm -d \
             -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
             --mount type=bind,src=$HOME/.Xauthority,dst=/root/.Xauthority.copy \
             x11-apps-img /bin/bash -c \
-            "cp /root/.Xauthority.copy /root/.Xauthority; chown root:root .Xauthority; xeyes"
+            "cp /root/.Xauthority.copy /root/.Xauthority; chown root:root /root/.Xauthority; xeyes"
 ```
+
+ギョロギョロの目が表示されましたら成功！
 
 ポイント:  
  - --net host  
