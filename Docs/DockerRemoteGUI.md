@@ -2,7 +2,7 @@
 DockerコンテナのアプリケーションGUIの表示について解説する．
 
 # 目次
-- [Call Host To Container](./DockerRemoteGUI.md?plain=1#L8)
+- [Call Host To Container](#call-host-to-container)
 
 
 # Call Host To Container 
