@@ -14,7 +14,7 @@ DockerコンテナのアプリケーションGUIの表示について解説す�
 ヒント:「　X11　」「　xhost　」 <ー 調べるといい
 
 [Dockerfile]
-```
+``` Dockerfile
 FROM ubuntu:latest
 # パッケージ管理ツールのアップデート
 RUN apt update && apt upgrade -y
@@ -29,17 +29,17 @@ CMD [ "/bin/bash" ]
 上記にSourceをDockerfile名のファイルに保存
 
 Dockerfile情報の構築
-```
+``` bash
 docker build -t x11-apps-img .
 ```
 
 ホスト側のGUI表示の許可 (ターミナル上で実行)
-```
+``` bash
 xhost local:+
 ```
 
 イメージの呼び出し (ターミナル上で実行)
-```
+``` bash
 docker run --rm -d \
            -e DISPLAY=$DISPLAY \
            -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
@@ -58,14 +58,14 @@ Client <----> Server <----> Container
 クライアントからサーバー内のコンテナのGUIを呼び出す方法として以下の手順で実現可能 
 
 sshによるログイン
-```
+``` bash
 # 「-X」 or 「-Y」 でも問題は無いんだけど私の場合では「-XY」としている
 ssh -XY serverhost@serverip
 ```
 
 適当なところにディレクトリを作って移動，下記の内容のDockerfileを作成  
 [Dockerfile (Server Side)]
-```
+``` Dockerfile
 FROM ubuntu:latest
 # パッケージ管理ツールのアップデート
 RUN apt update && apt upgrade -y
@@ -78,12 +78,12 @@ CMD [ "/bin/bash" ]
 ```
 
 Dockerfile情報の構築
-```
+``` bash
 docker build -t x11-apps-img .
 ```
 
 コンテナを起動
-```
+``` bash
 docker run --rm -d \
             --net host \
             -e DISPLAY=$DISPLAY \

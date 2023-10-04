@@ -8,7 +8,7 @@ Client <----> Server <----> Container
 クライアントからサーバー内のコンテナのSSHにログインする方法として以下の手順で実現可能
 
 [ホストにログイン]
-```
+``` bash
 # 「-X」 or 「-Y」 でも問題は無いんだけど私の場合では「-XY」としている
 ssh -XY serverhost@serverip
 ```
@@ -16,7 +16,7 @@ ssh -XY serverhost@serverip
 適当なところにディレクトリを作って移動，下記の内容のDockerfileを作成  
 [Dockerfile (Server Side)]
 
-```
+``` Dockerfile
 FROM ubuntu:latest
 # パッケージ管理ツールのアップデート
 RUN apt update && apt upgrade -y
@@ -46,12 +46,12 @@ CMD [ "/bin/bash" ]
 ```
 
 Dockerfile情報の構築
-```
+``` bash
 docker build -t ssh-server-img .
 ```
 
 公開キーの発行
-```
+``` bash
 ssh-keygen
 # pubkey名のファイルを作成
 # Generating public/private rsa key pair.
@@ -60,12 +60,12 @@ ssh-keygen
 ```
 
 pubkeyへの権限付与
-```
+``` bash
 sudo chmod 700 pubkey*
 ```
 
 コンテナを起動（--rmで消さずに起動）
-```
+``` bash
 docker run -itd \
             -p 5050:22 \
             --name ssh-cont \
@@ -78,6 +78,6 @@ docker run -itd \
 ```                 
 
 サーバー側からコンテナにsshでログイン
-```
+``` bash
 ssh -i pubkey　-p 5050 root@docker_network_ip # DockerコンテナのIPアドレスは「docker inspect ssh-cont | grep IPAddress」で探せる
 ```

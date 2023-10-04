@@ -22,7 +22,7 @@ Docker管理コマンド
 
 # イメージ用コマンド
 # docker build
-```
+``` bash
 使い方: docker build [オプション] パス | URL | -
 
 パスにあるソースコードから新しいイメージを構築
@@ -70,7 +70,7 @@ Docker管理コマンド
 # docker tag
 
 # docker run
-```
+``` bash
 使い方: docker run [オプション] イメージ [コマンド] [引数...]
 
 新しいコンテナを実行する命令
