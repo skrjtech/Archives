@@ -16,7 +16,7 @@ ssh -XY serverhost@serverip
 適当なところにディレクトリを作って移動，下記の内容のDockerfileを作成  
 [Dockerfile (Server Side)]
 
-``` Dockerfile
+``` Dockerfile:Dockerfile
 FROM ubuntu:latest
 # パッケージ管理ツールのアップデート
 RUN apt update && apt upgrade -y
@@ -79,5 +79,7 @@ docker run -itd \
 
 サーバー側からコンテナにsshでログイン
 ``` bash
-ssh -i pubkey　-p 5050 root@docker_network_ip # DockerコンテナのIPアドレスは「docker inspect ssh-cont | grep IPAddress」で探せる
+# DockerコンテナのIPアドレスは，
+#「docker inspect ssh-cont | grep IPAddress」で探せる
+ssh -i pubkey　-p 5050 root@docker_network_ip 
 ```
