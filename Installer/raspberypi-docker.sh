@@ -1,13 +1,9 @@
 #!/bin/bash
-sudo apt update && sudo apt upgrade
-curl -sSL https://get.docker.com | sh
-sudo usermod -aG docker ${USER}
-
-LATEST=v2.15.0
-URL=https://github.com/docker/compose/releases/download/$LATEST/docker-compose-linux-aarch64
-OUTPUT_PATH=/usr/local/lib/docker/cli-plugins
-sudo mkdir -p $OUTPUT_PATH
-OUTPUT_PATH=$OUTPUT_PATH/docker-compose
-sudo curl -SL $URL -o $OUTPUT_PATH
-sudo chown $USER:$USER $OUTPUT_PATH
-sudo chmod 777 $OUTPUT_PATH
+# 常に最新バージョンをインストール
+sudo apt-get remove docker docker-engine docker.io containerd runc
+sudo apt-get update
+sudo apt-get install apt-transport-https ca-certificates curl gnupg lsb-release
+curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io
