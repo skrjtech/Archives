@@ -15,13 +15,13 @@ rm -rf Python-$PYTHON_VERSION.tar.xz
 cd Python-$PYTHON_VERSION                                                                    
 # ./configure --prefix=/usr/local/python --with-ensurepip
 ./configure --enable-optimizations --prefix=/usr/local/python
-make                                                                                         
+make -j8
 sudo make install                                                                                 
 cd ../                                                                                         
 rm -rf Python-$PYTHON_VERSION
 
-echo 'export PYTHONDONTWRITEBYTECODE=1' >> ~/.bashrc
-echo 'export PATH=/usr/local/python/bin:$PATH' >> ~/.bashrc
+# echo 'export PYTHONDONTWRITEBYTECODE=1' >> ~/.bashrc
+# echo 'export PATH=/usr/local/python/bin:$PATH' >> ~/.bashrc
 
 ln -sf /usr/local/python/bin/python3 /usr/bin/python
 ln -sf /usr/local/python/bin/pip3 /usr/bin/pip
